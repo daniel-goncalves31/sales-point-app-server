@@ -15,7 +15,7 @@
     "audit": "audit-ci --config audit-ci.json",
     "build": "rimraf dist && npx tsc -p tsconfig-build.json",
     "dev": "cross-env NODE_ENV=development npx ts-node-dev -r tsconfig-paths/register src/main/server.ts",
-    "start": "cross-env NODE_ENV=production node start dist/main/server.js",
+    "start": "yarn typeorm migration:run && cross-env NODE_ENV=production node dist/main/server.js",
     "test": "cross-env NODE_ENV=test jest --passWithNoTests --runInBand",
     "test:ci": "yarn test --forceExit --detectOpenHandles --coverage",
     "test:dev": "yarn test --watch",
@@ -38,7 +38,6 @@
     "@typescript-eslint/eslint-plugin": "^3.9.0",
     "@typescript-eslint/parser": "^3.9.0",
     "audit-ci": "^3.1.1",
-    "cross-env": "^7.0.3",
     "eslint": "^7.7.0",
     "husky": "^4.2.5",
     "jest": "^26.4.0",
@@ -47,7 +46,6 @@
     "rimraf": "^3.0.2",
     "supertest": "^4.0.2",
     "ts-jest": "^26.2.0",
-    "ts-node": "^8.10.2",
     "ts-node-dev": "^1.0.0-pre.62",
     "tsconfig-paths": "^3.9.0",
     "typescript": "3.9"
@@ -55,6 +53,7 @@
   "dependencies": {
     "bcrypt": "^5.0.0",
     "cookie-parser": "^1.4.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.1.0",
@@ -62,6 +61,7 @@
     "module-alias": "^2.2.2",
     "pg": "^8.3.0",
     "sqlite3": "^5.0.2",
+    "ts-node": "^9.1.1",
     "typeorm": "^0.2.25",
     "uuid": "^8.3.1"
   }
